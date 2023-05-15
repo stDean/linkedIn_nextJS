@@ -8,11 +8,11 @@
   }
 }
 
-/* @layer components {
+@layer components {
   .intent {
     @apply flex justify-between items-center hover:shadow-xl p-4 cursor-pointer rounded-lg text-black bg-white max-w-md mx-auto xl:mx-0;
   }
-
+/* 
   .sidebarButton {
     @apply dark:border-t border-gray-600 py-3 px-4 cursor-pointer opacity-80 hover:opacity-100;
   }
@@ -27,5 +27,5 @@
 
   .postButton {
     @apply flex items-center justify-center space-x-2 cursor-pointer hover:bg-black/10 dark:hover:bg-black/20 w-full py-2.5 rounded transition ease-out font-medium;
-  }
-} */
+  } */
+}

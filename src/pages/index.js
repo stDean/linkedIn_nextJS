@@ -4,13 +4,13 @@ import ExploreIcon from "@mui/icons-material/Explore";
 import GroupIcon from "@mui/icons-material/Group";
 import OndemandVideoSharpIcon from "@mui/icons-material/OndemandVideoSharp";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
-// import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 
 import { HeaderLink } from "@/components";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Head>
         <title>LinkedIn</title>
         <link rel="icon" href="/favi.png" />
@@ -39,6 +39,33 @@ export default function Home() {
           </div>
         </div>
       </header>
-    </main>
+
+      <main className="flex flex-col xl:flex-row items-center max-w-screen-xl mx-auto">
+        <div className="space-y-6 xl:space-y-16">
+          <h1 className="text-3xl md:text-5xl text-amber-800/80 max-w-xl !leading-snug pl-4">
+            Welcome to your professional community
+          </h1>
+
+          <div className="space-y-4 pl-4">
+            <div className="intent">
+              <h2 className="text-xl">Search for a job</h2>
+              <ArrowForwardIosRoundedIcon className="text-gray-700" />
+            </div>
+            <div className="intent">
+              <h2 className="text-xl">Find a person you know</h2>
+              <ArrowForwardIosRoundedIcon className="text-gray-700" />
+            </div>
+            <div className="intent">
+              <h2 className="text-xl">Learn a new skill</h2>
+              <ArrowForwardIosRoundedIcon className="text-gray-700" />
+            </div>
+          </div>
+        </div>
+
+        <div className="relative xl:absolute w-96 h-96 lg:w-[650px] lg:h-[650px] xl:w-[750px] xl:h-[650px] top-14 right-5">
+          <Image src="land.svg" fill />
+        </div>
+      </main>
+    </>
   )
 }
