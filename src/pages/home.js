@@ -79,7 +79,8 @@ export default function Home({ providers }) {
   )
 }
 
-export async function getServerSideProps(context) {
+// this gets all the providers you have used with next-auth
+export async function getServerSideProps() {
   const providers = await getProviders();
 
   return {
