@@ -2,31 +2,32 @@ import Image from "next/image";
 import { Avatar } from "@mui/material";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import { useSession } from "next-auth/react";
 
 const Sidebar = () => {
+
+  const { data: session } = useSession();
+
   return (
     <div className="space-y-2 min-w-max max-w-xl">
       {/* Top */}
       <div className="bg-white dark:bg-[#1D2226] rounded-lg overflow-hidden relative flex flex-col items-center text-center border border-gray-300 dark:border-none">
         <div className="relative w-full h-14">
-          <Image src="/LinkedIn-Default.webp" fill priority />
+          <Image src="/LinkedIn-Default.webp" fill priority alt="side bar logo" />
         </div>
 
         <Avatar
           className="!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer"
           // onClick={signOut}
-          // src={session?.user?.image}
-          src="/land.svg"
+          src={session?.user?.image}
         />
 
         <div className="mt-5 py-4 space-x-0.5">
           <h4 className="hover:underline decoration-purple-700 underline-offset-1 cursor-pointer">
-            {/* {session?.user?.name} */}
-            Dean
+            {session?.user?.name}
           </h4>
           <p className="text-black/60 dark:text-white/75 text-sm">
-            {/* {session?.user?.email} */}
-            tobaogundimu@gmail.com
+            {session?.user?.email}
           </p>
         </div>
 

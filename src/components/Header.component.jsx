@@ -33,7 +33,7 @@ const Header = () => {
       <div className="flex items-center space-x-2 w-full max-w-xs">
         {
           mounted && (
-            <Image src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" width={55} height={55} />
+            <Image src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" width={55} height={55} alt="logo" />
           )
         }
 
