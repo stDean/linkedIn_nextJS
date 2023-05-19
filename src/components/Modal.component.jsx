@@ -3,12 +3,12 @@ import IconButton from "@mui/material/IconButton";
 import { useSession } from "next-auth/react";
 import { Avatar } from "@mui/material";
 import { motion } from "framer-motion";
+import { useRecoilValue } from "recoil";
 
-// import { useRecoilValue } from "recoil";
-// import { getPostState } from "../atoms/postAtom";
 import Form from "./Form.component";
-// import { Post } from "./Post";
 import Backdrop from "./Backdrop.component";
+import { getPostState } from "@/atoms/postAtom";
+import Post from "./Post.component";
 
 const dropIn = {
   hidden: {
@@ -56,7 +56,7 @@ const gifYouUp = {
 
 const Modal = ({ handleClose, type }) => {
   const { data: session } = useSession();
-  // const post = useRecoilValue(getPostState);
+  const post = useRecoilValue(getPostState);
 
   return (
     <Backdrop onClick={handleClose}>
@@ -87,7 +87,7 @@ const Modal = ({ handleClose, type }) => {
         </motion.div>
       )}
 
-      {/* {type === "gifYouUp" && (
+      {type === "gifYouUp" && (
         <motion.div
           onClick={e => e.stopPropagation()}
           className="rounded-l-lg flex bg-[#1D2226] w-full max-w-6xl -mt-[7vh] mx-6"
@@ -106,7 +106,7 @@ const Modal = ({ handleClose, type }) => {
             <Post post={post} modalPost />
           </div>
         </motion.div>
-      )} */}
+      )}
     </Backdrop>
   );
 };
