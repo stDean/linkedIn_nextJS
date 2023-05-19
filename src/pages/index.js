@@ -2,7 +2,7 @@ import Head from "next/head";
 import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-import { Header, Sidebar } from "@/components";
+import { Feed, Header, Sidebar } from "@/components";
 
 export default function Home() {
 
@@ -27,8 +27,7 @@ export default function Home() {
       <main className="flex justify-center gap-x-5 px-4 sm:px-12">
         <div className="flex flex-col md:flex-row gap-5">
           <Sidebar />
-
-          {/* Main Feed */}
+          <Feed />
         </div>
 
         {/* Widgets */}
@@ -37,7 +36,9 @@ export default function Home() {
   )
 }
 
+// this id to get the session data 
 export async function getServerSideProps(context) {
+  // check if user is authenticated on the server
   const session = await getSession(context);
   if (!session) {
     return {
