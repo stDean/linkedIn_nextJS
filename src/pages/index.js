@@ -1,8 +1,11 @@
 import Head from "next/head";
 import { getSession, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
+import { AnimatePresence } from "framer-motion";
 
-import { Feed, Header, Sidebar } from "@/components";
+import { Feed, Header, Modal, Sidebar } from "@/components";
+import { modalState, modalTypeState } from "@/atoms/modalAtom";
 
 export default function Home() {
 
@@ -14,6 +17,8 @@ export default function Home() {
       router.push("/landin");
     },
   });
+  const [modalOpen, setModalOpen] = useRecoilState(modalState);
+  const [modalType, setModalType] = useRecoilState(modalTypeState);
 
   return (
     <div className="bg-[#F3F2EF] dark:bg-black dark:text-white h-screen overflow-y-scroll md:space-y-6">
@@ -31,6 +36,14 @@ export default function Home() {
         </div>
 
         {/* Widgets */}
+
+        <AnimatePresence>
+          {
+            modalOpen && (
+              <Modal handleClose={() => setModalOpen(false)} type={modalType} />
+            )
+          }
+        </AnimatePresence>
       </main>
     </div>
   )
