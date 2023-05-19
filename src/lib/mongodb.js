@@ -1,5 +1,6 @@
 import { MongoClient } from "mongodb";
 
+// this is basically for authentication of in mongodb with next auth
 if (!process.env.MONGODB_URI) {
   throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
 }
