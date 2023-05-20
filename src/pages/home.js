@@ -12,7 +12,7 @@ import { HeaderLink } from "@/components";
 export default function Home({ providers }) {
   // console.log(providers);
   return (
-    <div className="space-y-10 relative">
+    <main className="space-y-10 relative">
       <Head>
         <title>LinkedIn</title>
         <link rel="icon" href="/favi.png" />
@@ -49,7 +49,7 @@ export default function Home({ providers }) {
         </div>
       </header >
 
-      <main className="flex flex-col xl:flex-row items-center max-w-screen-xl mx-auto">
+      <div className="flex flex-col xl:flex-row items-center max-w-screen-xl mx-auto">
         <div className="space-y-6 xl:space-y-10">
           <h1 className="text-3xl md:text-5xl text-amber-800/80 max-w-xl !leading-snug pl-4">
             Welcome to your professional community
@@ -74,8 +74,8 @@ export default function Home({ providers }) {
         <div className="relative xl:absolute w-80 h-80 xl:w-[650px] xl:h-[650px] top-14 right-5">
           <Image src="land.svg" fill priority alt="side image" />
         </div>
-      </main>
-    </div >
+      </div>
+    </main>
   )
 }
 

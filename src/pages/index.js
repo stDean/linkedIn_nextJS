@@ -4,11 +4,11 @@ import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { AnimatePresence } from "framer-motion";
 
-import { Feed, Header, Modal, Sidebar } from "@/components";
+import { Feed, Header, Modal, Sidebar, Widget } from "@/components";
 import { modalState, modalTypeState } from "@/atoms/modalAtom";
 import { connectToDatabase } from "@/utils/mongodb";
 
-export default function Home({ posts }) {
+export default function Home({ posts, articles }) {
 
   const router = useRouter();
   const { status } = useSession({
@@ -22,7 +22,7 @@ export default function Home({ posts }) {
   const [modalType, setModalType] = useRecoilState(modalTypeState);
 
   return (
-    <div className="bg-[#F3F2EF] dark:bg-black dark:text-white h-screen overflow-y-scroll md:space-y-6">
+    <main className="bg-[#F3F2EF] dark:bg-black dark:text-white h-screen overflow-y-scroll md:space-y-6">
       <Head>
         <title>Feed | LinkedIn</title>
         <link rel="icon" href="/favi.png" />
@@ -30,13 +30,13 @@ export default function Home({ posts }) {
 
       <Header />
 
-      <main className="flex justify-center gap-x-5 px-4 sm:px-12">
+      <div className="flex justify-center gap-x-5 px-4 sm:px-12">
         <div className="flex flex-col md:flex-row gap-5">
           <Sidebar />
           <Feed posts={posts} />
         </div>
 
-        {/* Widgets */}
+        <Widget articles={articles} />
 
         <AnimatePresence>
           {
@@ -45,8 +45,8 @@ export default function Home({ posts }) {
             )
           }
         </AnimatePresence>
-      </main>
-    </div>
+      </div>
+    </main>
   )
 }
 
@@ -71,6 +71,15 @@ export async function getServerSideProps(context) {
     .sort({ timestamp: -1 })
     .toArray();
 
+  // Get Google News API
+  const results = await fetch(
+    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWS_API_KEY}`
+  ).then(res => {
+    if (res.ok) {
+      return res.json()
+    }
+  });
+
   return {
     props: {
       session,
@@ -83,6 +92,7 @@ export async function getServerSideProps(context) {
         userImg: post.userImg,
         createdAt: post.createdAt,
       })),
+      articles: results.articles,
     }
   }
 }

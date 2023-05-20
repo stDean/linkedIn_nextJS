@@ -41,11 +41,11 @@ const Feed = ({ posts }) => {
 
         useSSRPosts ? (
           posts.map(post => (
-            <Post key={post.id} post={post} />
+            <Post key={post._id} post={post} />
           ))
         ) : (
           realTimePosts.map(post => (
-            <Post key={post.id} post={post} />
+            <Post key={post._id} post={post} />
           ))
         )
       }
